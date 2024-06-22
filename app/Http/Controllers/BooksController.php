@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Models\Book;
@@ -21,14 +22,10 @@ class BooksController extends Controller
 
     public function index()
     {
-        $book = $this->objBook->all();
+        $book = $this->objBook->paginate(25);
         $user = $this->objUser->all();
 
         return view('books', compact('book', 'user'));
-    }
-
-    public function create()
-    {
     }
 
     public function store(Request $request)
@@ -59,32 +56,31 @@ class BooksController extends Controller
         return view('dashboard');
     }
 
-    public function show(Book $book)
+    public function edit($id)
     {
-        return view('books.show', compact('book'));
+        $book = $this->objBook->find($id);
+        $users = $this->objUser->all();
+
+        return view('create', compact('book', 'users'));
     }
 
-    public function edit(Book $book)
+
+    public function update(Request $request, $id)
     {
-        return view('books.edit', compact('book'));
+        $book = $this->objBook->all();
+
+        $bookupd = Book::find($id);
+        $input = $request->all();
+        $bookupd->update($input);
+
+        return view('books', compact('book'));
     }
 
-    public function update(Request $request, Book $book)
+    public function destroy($id)
     {
-        $book->author = $request->input('autor');
-        $book->title = $request->input('titulo');
-        $book->subtitle = $request->input('subtitulo');
-        $book->edition = $request->input('edicao');
-        $book->publisher = $request->input('editora');
-        $book->publication_year = $request->input('ano_publicacao');
-        $book->save();
+        $book = $this->objBook->all();
 
-        return redirect()->route('books.index');
-    }
-
-    public function destroy(Book $book)
-    {
-        $book->delete();
-        return redirect()->route('books.index');
+        Book::where('id',$id)->delete();
+        return redirect()->route("dashboard.books");
     }
 }

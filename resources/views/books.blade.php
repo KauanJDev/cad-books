@@ -7,6 +7,7 @@
                         class="text-center font-large font-semibold text-xl text-gray-800 dark:text-white mb-5 leading-tight">
                         SEUS LIVROS</h1>
                     <div class="col-8 m-auto">
+                        @csrf
                         <table class="w-full text-center text-nowrap">
                             <thead>
                                 <tr class="">
@@ -17,6 +18,7 @@
                                     <th scope="col">EDIÇÃO</th>
                                     <th scope="col">EDITORA</th>
                                     <th scope="col">ANO DA PUBLICAÇÃO</th>
+                                    
 
                                 </tr>
                             </thead>
@@ -31,13 +33,32 @@
                                             <td>{{ $books->edição }}</td>
                                             <td>{{ $books->editora }}</td>
                                             <td>{{ $books->ano_da_publicação }}</td>
+                                            <td style="display: flex;">
+                                                <a href="{{ url("books/$books->id/edit") }}" class="js-del" style="margin-right:20px">
+                                                    <x-primary-button class="mt-2">
+                                                        {{ __('Editar') }}
+                                                    </x-primary-button>
+                                                </a>
+                                                
+                                                <form action="{{ url("books/$books->id")}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+            
+                                                        <x-danger-button class="mt-2">
+                                                            {{ __('Deletar') }}
+                                                        </x-danger-button>
+                                                </form>
+                                            
+                                            </td>
 
                                         </tr>
                                     @endif
                                 @endforeach
 
                             </tbody>
+                            {{$book->links()}}
                         </table>
+                        
                     </div>
                 </div>
             </div>

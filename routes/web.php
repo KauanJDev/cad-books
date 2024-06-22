@@ -10,7 +10,9 @@ Route::get('/', function () {
 
 Route::get('/books', [BooksController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.books');
 Route::post('/books', [BooksController::class, 'store'])->middleware(['auth', 'verified'])->name('register.books');
-
+Route::get('/books/{id}/edit',[BooksController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit.books');
+Route::put('/books/{id}', [BooksController::class, 'update'])->middleware(['auth', 'verified'])->name('put.books');
+Route::delete('/books/{id}', [BooksController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete.books');
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
