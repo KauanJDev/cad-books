@@ -7,14 +7,6 @@
                         class="d-flex flex-column align-items-center text-center">
                         <h1 class="text-xl m-4">CADASTRO DE LIVROS</h1>
                         @csrf
-                        <select name="id_user" id="id_user"
-                            class="mb-3 text-center border-gray-300 dark:border-gray-700 dark:bg-zinc-500 dark:text-white focus:border-white dark:focus:border-white focus:ring-white dark:focus:ring-white rounded-md shadow-sm">
-
-                            <option value="">Selecione o Usuario</option>
-
-                            <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
-
-                        </select>
                         <div>
 
                             <x-text-input id="autor" class=" mt-1 m-full" type="text" name="autor"

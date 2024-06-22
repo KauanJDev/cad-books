@@ -49,7 +49,7 @@
                         <div>
 
                             <x-text-input id="ano_publicacao" maxlength="4" class=" mt-1 m-full" type="text"
-                                name="ano_publicacao" value="{{$book->ano_da_publicação}}" required autofocus
+                                name="ano_da_publicação" value="{{$book->ano_da_publicação}}" required autofocus
                                 autocomplete="ano_publicacao" />
                             <x-input-label for="ano_publicacao" :value="__('Ano da Popublicação')" />
                         </div>

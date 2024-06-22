@@ -31,20 +31,18 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_user' => ['required'],
             'autor' => ['required', 'string', 'max:40'],
             'titulo' => ['required', 'string', 'max:40'],
             'subtitulo' => ['string', 'max:100'],
-            'edição' => ['required','lowercase','max:20'],
-            'editora' => ['required','max:120'],
+            'edição' => ['required', 'lowercase', 'max:20'],
+            'editora' => ['required', 'max:120'],
             'ano_publicacao' => ['required', 'int']
         ]);
 
         $book = $this->objBook->all();
 
-
         $book = new Book();
-        $book->id_user = $request->id_user;
+        $book->id_user = $request->user()->id;
         $book->autor = $request->autor;
         $book->titulo = $request->titulo;
         $book->subtitulo = $request->subtitulo;
@@ -60,27 +58,20 @@ class BooksController extends Controller
     {
         $book = $this->objBook->find($id);
         $users = $this->objUser->all();
-
         return view('create', compact('book', 'users'));
     }
 
-
     public function update(Request $request, $id)
     {
-        $book = $this->objBook->all();
-
         $bookupd = Book::find($id);
         $input = $request->all();
         $bookupd->update($input);
-
-        return view('books', compact('book'));
+        return redirect()->route("dashboard.books");
     }
 
     public function destroy($id)
     {
-        $book = $this->objBook->all();
-
-        Book::where('id',$id)->delete();
+        Book::where('id', $id)->delete();
         return redirect()->route("dashboard.books");
     }
 }
