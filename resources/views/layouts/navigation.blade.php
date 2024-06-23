@@ -16,7 +16,6 @@
                         {{ __('Registrar Livros') }}
                     </x-nav-link>
                 </div>
-
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard.books')" :active="request()->routeIs('books')">
                         {{ __('Seus Livros') }}
@@ -82,9 +81,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Registrar Livros') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('register.books')" :active="request()->routeIs('register.books')">
+            <x-responsive-nav-link :href="route('dashboard.books')" :active="request()->routeIs('dashboard')">
                 {{ __('Seus Livros') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('show.books')" :active="request()->routeIs('dashboard')">
+                {{ __('Sua Vitrine') }}
+            </x-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->

@@ -14,11 +14,6 @@
                     <h1 class="text-xl m-4">EDITAR</h1>
                     @csrf
                     <div>
-                        <x-input-label for="capa" :value="__('Capa Do Livro')" />
-                        <x-text-input id="capa" class=" mt-1 m-full" type="file" name="capa"
-                            :value="old('capa')" required autofocus autocomplete="capa" />
-                    </div>
-                    <div>
                         <x-input-label for="autor" :value="__('Autor')" />
                         <x-text-input id="autor" class=" mt-1 m-full" type="text" name="autor"
                             value="{{ $book->autor }}" required autofocus autocomplete="autor" />

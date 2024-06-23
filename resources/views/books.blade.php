@@ -8,7 +8,7 @@
                         SEUS LIVROS</h1>
                     <div class="col-8 m-auto">
                         @csrf
-                        <table class="w-full text-center text-nowrap">
+                        <table class="w-full text-center text-nowrap table-auto">
                             <thead>
                                 <tr class="">
                                     <th scope="col">ID</th>
