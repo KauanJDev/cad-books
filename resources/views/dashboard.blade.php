@@ -11,7 +11,7 @@
                         <div>
                             <x-input-label for="capa" :value="__('Capa Do Livro')" />
                             <x-text-input id="capa" class=" mt-1 m-full" type="file" name="capa"
-                                :value="old('capa')" required autofocus autocomplete="capa" />
+                                :value="old('capa')"/>
                         </div>
                         <div>
                             <x-input-label for="autor" :value="__('Autor')" />
@@ -28,7 +28,7 @@
                         <div>
                             <x-input-label for="subtitulo" :value="__('Subtitulo')" />
                             <x-text-input id="subtitulo" class=" mt-1 m-full" type="text" name="subtitulo"
-                                :value="old('subtitulo')" required autofocus autocomplete="subtitulo" />
+                                :value="old('subtitulo')" autofocus autocomplete="subtitulo" />
                             
                         </div>
                         <div>

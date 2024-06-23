@@ -62,8 +62,12 @@ class BooksController extends Controller
             $book->capa = $imageName;
 
         }
+        else{
+            $book->capa = '';
+            $book->save();
+        }
 
-        $book->save();
+        
 
 
         return redirect()->route('dashboard.books');
