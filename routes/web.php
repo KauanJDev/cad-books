@@ -13,6 +13,7 @@ Route::post('/books', [BooksController::class, 'store'])->middleware(['auth', 'v
 Route::get('/books/{id}/edit',[BooksController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit.books');
 Route::put('/books/{id}', [BooksController::class, 'update'])->middleware(['auth', 'verified'])->name('put.books');
 Route::delete('/books/{id}', [BooksController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete.books');
+Route::get('/books/show',[BooksController::class, 'show'])->middleware(['auth', 'verified'])->name('show.books');
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');

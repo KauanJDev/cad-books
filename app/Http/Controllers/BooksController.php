@@ -39,8 +39,6 @@ class BooksController extends Controller
             'ano_publicacao' => ['required', 'int']
         ]);
 
-        $book = $this->objBook->all();
-
         $book = new Book();
         $book->id_user = $request->user()->id;
         $book->autor = $request->autor;
@@ -49,23 +47,42 @@ class BooksController extends Controller
         $book->edição = $request->edição;
         $book->editora = $request->editora;
         $book->ano_da_publicação = $request->ano_publicacao;
+       
+
+        if($request->hasFile('capa') && $request->file('capa')->isValid()){
+
+            $requestImage = $request->capa;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $request->capa->move(public_path('img/books'), $imageName);
+
+            $book->capa = $imageName;
+
+        }
+
         $book->save();
 
-        return view('dashboard');
+
+        return redirect()->route('dashboard.books');
     }
 
     public function edit($id)
     {
         $book = $this->objBook->find($id);
         $users = $this->objUser->all();
-        return view('create', compact('book', 'users'));
+        return view('edit', compact('book', 'users'));
     }
 
     public function update(Request $request, $id)
     {
+
         $bookupd = Book::find($id);
         $input = $request->all();
-        $bookupd->update($input);
+        $bookupd->update($input);  
+
         return redirect()->route("dashboard.books");
     }
 
@@ -73,5 +90,11 @@ class BooksController extends Controller
     {
         Book::where('id', $id)->delete();
         return redirect()->route("dashboard.books");
+    }
+
+    public function show(){
+        $book = $this->objBook->all();
+
+        return view('vitrine', compact('book'));
     }
 }

@@ -19,7 +19,13 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard.books')" :active="request()->routeIs('books')">
-                        {{ __('Livros') }}
+                        {{ __('Seus Livros') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('show.books')" :active="request()->routeIs('books')">
+                        {{ __('Sua Vitrine') }}
                     </x-nav-link>
                 </div>
             </div>
