@@ -34,7 +34,7 @@ class BooksController extends Controller
             'autor' => ['required', 'string', 'max:40'],
             'titulo' => ['required', 'string', 'max:40'],
             'subtitulo' => ['string', 'max:100'],
-            'edição' => ['required', 'lowercase', 'max:20'],
+            'edição' => ['required', 'max:20'],
             'editora' => ['required', 'max:120'],
             'ano_publicacao' => ['required', 'int']
         ]);
@@ -64,10 +64,10 @@ class BooksController extends Controller
         }
         else{
             $book->capa = '';
-            $book->save();
+            
         }
 
-        
+        $book->save();
 
 
         return redirect()->route('dashboard.books');
