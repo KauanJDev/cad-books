@@ -11,13 +11,21 @@
                         @if (Auth::user()->id == $books->id_user)
                             <div class="dark:bg-zinc-900 mx-2 text-center h-auto w-auto rounded-lg">
                                 @if ($books->capa == '')
-                                    <p class="p-4">CAPA VAZIA!</p>
+                                    <p class="p-4 text-2xl">CAPA VAZIA!</p>
                                     <br>
-                                    <h4 class="mb-2">TITULO DA OBRA: {{$books->titulo}}</h4>
+                                    <p class="mb-2 text-xl">{{$books->titulo}}</p>
+                                    <p class="mb-2 text-base">{{$books->subtitulo}}</p>
+                                    <p class="mb-2 text-base">{{$books->edição}}</p>
+                                    <p class="mb-2 text-base">{{$books->editora}}</p>
+                                    <p class="mb-2 text-base">{{$books->ano_da_publicação}}</p>  
                                 @else
                                     <img class="object-scale-down rounded-lg object-center" src="{{asset('img/books/') ."/" . $books->capa}}" >
                                     <br>
-                                    <h4 class="mb-2">TITULO DA OBRA: {{$books->titulo}}</h4>
+                                    <p class="mb-2 text-xl">{{$books->titulo}}</p>
+                                    <p class="mb-2 text-base">{{$books->subtitulo}}</p>
+                                    <p class="mb-2 text-base">{{$books->edição}}</p>
+                                    <p class="mb-2 text-base">{{$books->editora}}</p>
+                                    <p class="mb-2 text-base">{{$books->ano_da_publicação}}</p>
                                 @endif
                             </div>
                         @endif

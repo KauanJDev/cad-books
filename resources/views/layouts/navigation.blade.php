@@ -24,7 +24,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('show.books')" :active="request()->routeIs('books')">
-                        {{ __('Sua Vitrine') }}
+                        {{ __('Seu Catálogo') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 {{ __('Seus Livros') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('show.books')" :active="request()->routeIs('dashboard')">
-                {{ __('Sua Vitrine') }}
+                {{ __('Seu Catálogo') }}
             </x-responsive-nav-link>
             
         </div>
