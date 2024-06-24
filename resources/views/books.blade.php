@@ -18,8 +18,7 @@
                                     <th scope="col">EDIÇÃO</th>
                                     <th scope="col">EDITORA</th>
                                     <th scope="col">ANO DA PUBLICAÇÃO</th>
-
-
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +39,7 @@
                                                         {{ __('Editar') }}
                                                     </x-primary-button>
                                                 </a>
-
+                                            
                                                 <form action="{{ url("books/$books->id") }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -57,7 +56,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-5">
                         {{ $book->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
